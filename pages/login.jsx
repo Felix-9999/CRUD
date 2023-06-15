@@ -96,8 +96,7 @@ export default function Login() {
 
                     </div>
 
-                    {/* {formik.errors.password && formik.touched.password ? <span className='text-rose-500'>{formik.errors.password}</span> : <></>} */}
-                    {/* login buttons */}
+
                     <div className="input-button">
                         <button type='submit' className={styles.button}>
                             Login
@@ -105,12 +104,12 @@ export default function Login() {
                     </div>
                     <div className="input-button">
                         <button type='button' onClick={handleGoogleSignin} className={styles.button_custom}>
-                            Sign In with Google <Image src={'/assets/google.svg'} width="20" height={20} ></Image>
+                            Sign In with Google <Image alt='Sign In with Google' src={'/assets/google.svg'} width="20" height={20} ></Image>
                         </button>
                     </div>
                     <div className="input-button">
                         <button type='button' onClick={handleGithubSignin} className={styles.button_custom}>
-                            Sign In with Github <Image src={'/assets/github.svg'} width={25} height={25}></Image>
+                            Sign In with Github <Image alt='Sign In with Github' src={'/assets/github.svg'} width={25} height={25}></Image>
                         </button>
                     </div>
                 </form>
