@@ -1,25 +1,26 @@
 import connectMongo from "../../../database/connTable"
 import {getUser,  putUser,deleteUser } from "../../../database/controllerTable"
 
-export default async function  handler(req, res) {
-     
-    connectMongo().catch(()=>res.status(405).json({error:"Error in the Connection"}))
-    //type of request
-     const  {method} = req
+export default async function handler(req, res) {
+    
+    connectMongo().catch(() => res.status(405).json({ error: "Error in the Connection"}))
 
-     switch(method){
+    // type of request
+    const { method } = req
+
+    switch (method){
         case "GET":
-            getUser(req,res);
+            getUser(req, res);
             break;
-            case "PUT" :
-                putUser(req,res)
+        case 'PUT':
+            putUser(req, res)
             break;
-            case 'DELETE':
-                deleteUser(req, res)
-                break;
-            default : 
-                res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
-                res.status(405).end(`Method ${method} Not Allowd`)
-                break;
-        }
+        case 'DELETE':
+            deleteUser(req, res)
+            break;
+        default : 
+            res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
+            res.status(405).end(`Method ${method} Not Allowd`)
+            break;
+    }
 }
