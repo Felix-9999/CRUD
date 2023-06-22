@@ -2,7 +2,6 @@ import Head from "next/head"
 import { BiUserPlus, BiX, BiCheck } from "react-icons/bi"
 import Table from "../../components/table"
 import Form, { Forms } from "../../components/form"
-import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { toggleChangeAction, deleteAction } from "../../redux/reducer"
 import { deleteUser, getUsers } from "../../lib/helper"
@@ -10,7 +9,6 @@ import { useQueryClient } from "react-query"
 
 const Home = () => {
 
-  const vidible = useSelector((state) => state.app.client.toggleForm)
   const vidibles = useSelector((state) => state.app.client.toggleForms)
 
 
@@ -22,13 +20,6 @@ const Home = () => {
     dispatch(toggleChangeAction())
   }
 
-  const deletehandler = async () => {
-    if (deleteId) {
-      dispatch(deleteAction(null))
-      await deleteUser(deleteId)
-      await queryClient.prefetchQuery("users", getUsers)
-    }
-  }
 
   const canclehandler = async () => {
     dispatch(deleteAction(null))
@@ -39,14 +30,6 @@ const Home = () => {
       <Head>
         <title>CRUD</title>
       </Head>
-
-      {/* {deleteId ? (
-        <div className="w-full h-full absolute  z-10 flex justify-center items-center">
-          <div className="w-2/5 h-2/5 bg-gray-500 flex justify-center items-center rounded-lg">
-            {DeleteComponent({ deletehandler, canclehandler })}
-          </div>
-        </div >
-      ) : <></>} */}
 
 
       <main className="py-5 relative" >
@@ -75,14 +58,3 @@ const Home = () => {
 
 export default Home
 
-function DeleteComponent({ deletehandler, canclehandler }) {
-  return (
-    <div className='flex gap-5'>
-      <button>Are you sure?</button>
-      <button onClick={deletehandler} className='flex bg-red-500 text-white px-4 py-2 border rounded-md hover:bg-rose-500 hover:border-red-500 hover:text-gray-50'>
-        Yes <span className='px-1'><BiX color='rgb(255 255 255)' size={25} /></span></button>
-      <button onClick={canclehandler} className='flex bg-green-500 text-white px-4 py-2 border rounded-md hover:bg-gree-500 hover:border-green-500 hover:text-gray-50'>
-        No <span className='px-1'><BiCheck color='rgb(255 255 255)' size={25} /></span></button>
-    </div>
-  )
-}

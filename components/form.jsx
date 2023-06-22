@@ -14,9 +14,7 @@ export default function Form() {
     const formId = useSelector(state => state.app.client.formId)
 
     return (
-        formId ?
-            UpdateUserForm({ formId, formData, setFormData })
-            : AdduserForm({ formData, setFormData })
+        UpdateUserForm({ formId, formData, setFormData })
     )
 
 }
@@ -25,8 +23,6 @@ export function Forms() {
     const formId = useSelector(state => state.app.client.formId)
 
     return (
-
-
         AdduserForm({ formData, setFormData })
     )
 

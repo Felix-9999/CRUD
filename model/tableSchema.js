@@ -5,7 +5,6 @@ const userSchema =  new Schema({
     email:String,
     salary:Number,
     date:String,
-    status: String
 })
 
 const Users = models.user || model("user",userSchema)
