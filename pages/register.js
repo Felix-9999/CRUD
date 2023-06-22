@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout from '../layout/layout'
 import Link from 'next/link'
 import styles from '../styles/Form.module.css';
+import Image from 'next/image'
 import { HiAtSymbol, HiFingerPrint, HiOutlineUser } from "react-icons/hi";
 import { useState } from 'react';
 import { useFormik } from 'formik';
@@ -30,13 +31,13 @@ export default function Register(){
             body: JSON.stringify(values)
         }
 
-        await fetch('https://crud-rosy-two.vercel.app', options)
+        await fetch('https://crud-rosy-two.vercel.app/api/auth/signup', options)
             .then(res => res.json())
             .then((data) => {
-                if(data) router.push('https://crud-rosy-two.vercel.app')
+                if(data) router.push('https://crud-rosy-two.vercel.app/')
             })
     }
-// https://crud-rosy-two.vercel.app/api/auth/signup
+
     return (
         <Layout>
 
