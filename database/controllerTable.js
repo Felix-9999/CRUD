@@ -1,10 +1,10 @@
 // Controller
-import Users from "../model/tableSchema"
+import UsersTable from "../model/tableSchema"
  
 // get : http://localhost:3000/api/users
 export async function getUsers(req, res) {
   try {
-    const users = await Users.find({})
+    const users = await UsersTable.find({})
 
     if (!users) {
       return res.status(404).json({ error: "Data not found" });
@@ -22,7 +22,7 @@ export async function getUser(req, res) {
     const { userId } = req.query;
 
     if (userId) {
-      const user = await Users.findOne({ _id: userId });
+      const user = await UsersTable.findOne({ _id: userId });
 
       if (user) {
         return res.status(200).json(user);
@@ -46,7 +46,7 @@ export async function postUser(req, res) {
       return res.status(400).json({ error: "Form data not provided" });
     }
 
-    const user = await Users.create(formData);
+    const user = await UsersTable.create(formData);
 
     return res.status(200).json(user);
   } catch (error) {
@@ -61,7 +61,7 @@ export async function putUser(req, res) {
     const formData = req.body;
 
     if (userId && formData) {
-      const user = await Users.findByIdAndUpdate(userId, formData);
+      const user = await UsersTable.findByIdAndUpdate(userId, formData);
       
       if (user) {
         return res.status(200).json(user);
@@ -82,7 +82,7 @@ export async function deleteUser(req, res) {
     const { userId } = req.query;
 
     if (userId) {
-      const user = await Users.findByIdAndDelete(userId);
+      const user = await UsersTable.findByIdAndDelete(userId);
 
       if (user) {
         return res.status(200).json(user);
