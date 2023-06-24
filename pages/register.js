@@ -31,12 +31,13 @@ export default function Register(){
             body: JSON.stringify(values)
         }
 
-        await fetch('https://crud-rosy-two.vercel.app/api/auth/signup', options)
+        await fetch(`${process.env.NEXTAUTH_URL}/api/auth/signup`, options)
             .then(res => res.json())
             .then((data) => {
-                if(data) router.push('https://crud-rosy-two.vercel.app/')
+                if(data) router.push(`${process.env.NEXTAUTH_URL}`)
             })
     }
+    
 
     return (
         <Layout>

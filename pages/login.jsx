@@ -44,12 +44,12 @@ export default function Login() {
 
     // Google Handler function
     async function handleGoogleSignin() {
-        signIn('google', { callbackUrl: "https://crud-rosy-two.vercel.app" })
+        signIn('google', { callbackUrl: process.env.NEXTAUTH_URL })
     }
 
     // Github Login 
     async function handleGithubSignin() {
-        signIn('github', { callbackUrl: "https://crud-rosy-two.vercel.app" })
+        signIn('github', { callbackUrl: process.env.NEXTAUTH_URL })
     }
 
     return (
