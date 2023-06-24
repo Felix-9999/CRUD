@@ -7,6 +7,6 @@ const userSchema = new Schema({
   date: String,
 });
 
-const Users = models.user || model("user", userSchema);
+const UsersTable = models.user || model("user", userSchema);
 
-export default Users;
+export default UsersTable;
