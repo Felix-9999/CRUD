@@ -58,7 +58,7 @@ export async function postUser(req, res) {
 export async function putUser(req, res) {
   try {
     const { userId } = req.query;
-    const formData = req.body;
+    const formData = req.body; 
 
     if (userId && formData) {
       const user = await UsersTable.findByIdAndUpdate(userId, formData);
