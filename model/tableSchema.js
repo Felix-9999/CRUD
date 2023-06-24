@@ -1,12 +1,12 @@
 import { Schema, model, models } from 'mongoose';
 
-const userSchema = new Schema({
+const TableuserSchema = new Schema({
   name: String,
   email: String,
   salary: Number,
   date: String,
 });
 
-const UsersTable = models.user || model("user", userSchema);
+const UsersTable = models.user || model("user", TableuserSchema);
 
 export default UsersTable;
